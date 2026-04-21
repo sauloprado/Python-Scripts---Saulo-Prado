@@ -33,6 +33,38 @@ O script realiza:
 - validacao basica do resultado
 - registro local de acessos bem-sucedidos
 
+### `Email Profissional/`
+
+Base inicial para envio de e-mails com HTML, anexos e estrutura pronta para evoluir para automacoes mais sofisticadas.
+
+Arquivo principal:
+
+- `Email_Profissional_Com_Anexo.py`
+
+O projeto foi pensado para permitir:
+
+- mensagens com visual mais elegante
+- envio com anexo
+- padronizacao de comunicacoes recorrentes
+- futura expansao para historico, templates e envio em lote
+
+### `Email Profissional/Noticias IA Diarias/`
+
+Automacao pensada para buscar noticias recentes sobre inteligencia artificial e enviar um resumo diario por e-mail de forma automatica.
+
+Arquivos principais:
+
+- `enviar_noticias_ia.py`
+- `.env.example`
+- `agendar_noticias_ia.ps1`
+
+O projeto ja nasce preparado para:
+
+- consolidar noticias sobre ChatGPT, Claude, OpenAI e Anthropic
+- montar um resumo em HTML
+- enviar para um destinatario fixo todos os dias
+- rodar em segundo plano com agendamento no Windows
+
 ## Tecnologias Utilizadas
 
 - Python 3
