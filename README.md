@@ -14,6 +14,27 @@ Aqui voce vai encontrar scripts que ajudam a:
 - transformar estudos em codigo reutilizavel
 - manter um historico versionado da evolucao tecnica
 
+## Projeto Em Destaque
+
+### Noticias IA Diarias por E-mail
+
+Uma das automacoes mais interessantes deste repositorio e o projeto de envio diario de noticias sobre inteligencia artificial por e-mail.
+
+Essa automacao foi criada para:
+
+- buscar noticias recentes sobre ChatGPT, Claude, OpenAI, Anthropic e IA em geral
+- montar um resumo em HTML com visual mais profissional
+- enviar automaticamente para um destinatario definido
+- funcionar em segundo plano com agendamento diario no Windows
+
+Arquivos principais:
+
+- `Email Profissional/Noticias IA Diarias/enviar_noticias_ia.py`
+- `Email Profissional/Noticias IA Diarias/agendar_noticias_ia.ps1`
+- `Email Profissional/Noticias IA Diarias/CONFIGURACAO_E_PASSO_A_PASSO.md`
+
+Esse projeto representa bem a proposta do repositorio: transformar uma necessidade real do dia a dia em uma automacao util, documentada e reutilizavel.
+
 ## Estrutura Atual
 
 ### `Acesso Xeprium/`
