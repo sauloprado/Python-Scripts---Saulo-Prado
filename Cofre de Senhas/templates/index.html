@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cofre de Senhas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <main class="shell">
+        <section class="hero">
+            <div class="hero-copy">
+                <span class="eyebrow">Cofre Local</span>
+                <h1>Cofre de Senhas com interface web e criptografia local.</h1>
+                <p>
+                    Guarde credenciais no seu computador com senha mestra, arquivo criptografado
+                    e uma interface simples para consulta no dia a dia.
+                </p>
+            </div>
+            <div class="hero-panel">
+                <div class="status-card">
+                    <span class="status-label">Status</span>
+                    <strong id="vault-status">Verificando...</strong>
+                    <p id="vault-subtitle">O aplicativo vai detectar se o cofre ja existe.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="setup-section" class="panel hidden">
+            <div class="panel-header">
+                <h2>Criar cofre</h2>
+                <p>Defina uma senha mestra forte. Ela sera necessaria para destravar o cofre.</p>
+            </div>
+            <form id="setup-form" class="stack">
+                <label>
+                    <span>Senha mestra</span>
+                    <input type="password" name="master_password" minlength="12" required>
+                </label>
+                <label>
+                    <span>Confirmar senha mestra</span>
+                    <input type="password" name="confirmation" minlength="12" required>
+                </label>
+                <button type="submit" class="primary">Criar cofre</button>
+            </form>
+        </section>
+
+        <section id="unlock-section" class="panel hidden">
+            <div class="panel-header">
+                <h2>Desbloquear cofre</h2>
+                <p>Use sua senha mestra para acessar as credenciais salvas.</p>
+            </div>
+            <form id="unlock-form" class="stack">
+                <label>
+                    <span>Senha mestra</span>
+                    <input type="password" name="master_password" required>
+                </label>
+                <button type="submit" class="primary">Desbloquear</button>
+            </form>
+        </section>
+
+        <section id="vault-section" class="vault hidden">
+            <div class="vault-toolbar">
+                <div>
+                    <span class="eyebrow">Area Segura</span>
+                    <h2>Credenciais salvas</h2>
+                </div>
+                <button id="lock-button" class="ghost" type="button">Bloquear</button>
+            </div>
+
+            <div class="vault-grid">
+                <section class="panel">
+                    <div class="panel-header">
+                        <h3>Nova entrada</h3>
+                        <p>Adicione um servico ao cofre local.</p>
+                    </div>
+                    <form id="entry-form" class="stack">
+                        <label>
+                            <span>Servico</span>
+                            <input type="text" name="service" placeholder="Ex.: Gmail" required>
+                        </label>
+                        <label>
+                            <span>Usuario</span>
+                            <input type="text" name="username" placeholder="Seu login" required>
+                        </label>
+                        <label>
+                            <span>Senha</span>
+                            <div class="inline-field">
+                                <input type="text" name="password" placeholder="Sua senha" required>
+                                <button id="generate-button" class="ghost compact" type="button">Gerar</button>
+                            </div>
+                        </label>
+                        <label>
+                            <span>URL</span>
+                            <input type="url" name="url" placeholder="https://exemplo.com">
+                        </label>
+                        <label>
+                            <span>Observacoes</span>
+                            <textarea name="notes" rows="4" placeholder="Dicas, notas, codigos ou contexto"></textarea>
+                        </label>
+                        <button type="submit" class="primary">Salvar credencial</button>
+                    </form>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <h3>Itens do cofre</h3>
+                        <p>Pesquise e gerencie as entradas armazenadas.</p>
+                    </div>
+                    <label class="search-field">
+                        <span>Buscar</span>
+                        <input id="search-input" type="search" placeholder="Filtrar por servico ou usuario">
+                    </label>
+                    <div id="entries-list" class="entries-list"></div>
+                </section>
+            </div>
+        </section>
+
+        <div id="toast" class="toast hidden"></div>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

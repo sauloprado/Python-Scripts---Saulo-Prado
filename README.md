@@ -86,6 +86,23 @@ O projeto ja nasce preparado para:
 - enviar para um destinatario fixo todos os dias
 - rodar em segundo plano com agendamento no Windows
 
+### `Cofre de Senhas/`
+
+Aplicacao local com interface web para armazenamento de credenciais com senha mestra e arquivo criptografado.
+
+Arquivos principais:
+
+- `app.py`
+- `requirements.txt`
+- `templates/index.html`
+
+O projeto foi desenhado para:
+
+- guardar senhas localmente com criptografia
+- usar senha mestra para desbloqueio
+- oferecer cadastro, consulta e exclusao de credenciais
+- gerar senhas fortes automaticamente
+
 ## Tecnologias Utilizadas
 
 - Python 3

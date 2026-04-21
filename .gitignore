@@ -16,3 +16,4 @@ env/
 historico_acessos_xperium.txt
 *.env
 estado_envio.json
+vault.enc
