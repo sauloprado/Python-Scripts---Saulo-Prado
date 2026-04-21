@@ -1,84 +1,94 @@
-# Scripts Python
+# Python Scripts - Saulo Prado
 
-Repositório pessoal de scripts Python criados para automatizar tarefas do dia a dia, testar ideias rapidamente e consolidar estudos com projetos práticos.
+Colecao pessoal de scripts Python voltados para automacao, produtividade, testes praticos e aprendizado aplicado.
 
-Aqui a proposta é simples: manter soluções úteis, reaproveitáveis e bem documentadas, em vez de deixar cada script perdido em pastas locais.
+Este repositorio reune pequenos projetos uteis do dia a dia, com foco em organizacao, clareza de codigo e evolucao continua. A ideia nao e apenas guardar arquivos, mas construir uma base reutilizavel de automacoes reais.
 
-## Objetivo
+## Visao Geral
 
-Este repositório serve para:
+Aqui voce vai encontrar scripts que ajudam a:
 
-- centralizar automações em Python
-- organizar estudos aplicados em projetos reais
-- versionar melhorias com segurança
-- facilitar manutenção e reaproveitamento de código
-- construir um portfólio técnico simples e honesto
+- automatizar tarefas repetitivas
+- acelerar rotinas operacionais
+- registrar aprendizados com projetos praticos
+- transformar estudos em codigo reutilizavel
+- manter um historico versionado da evolucao tecnica
 
 ## Estrutura Atual
 
-No momento, o projeto contém:
+### `Acesso Xeprium/`
 
-- `Acesso Xeprium/`
-  Script de automação de login na plataforma Xperiun usando Selenium.
+Automacao de acesso a plataforma Xperiun com Python e Selenium.
 
-## Script Em Destaque
+Arquivo principal:
 
-### `Acesso_Xperium.py`
+- `Acesso_Xperium.py`
 
-Automatiza o processo de acesso à plataforma Xperiun com abertura do navegador, preenchimento de credenciais e tentativa de validação do login.
+O script realiza:
 
-**Principais pontos:**
+- abertura automatica do navegador
+- captura de credenciais via terminal
+- preenchimento do formulario de login
+- tentativa de clique e envio do acesso
+- validacao basica do resultado
+- registro local de acessos bem-sucedidos
 
-- solicita e-mail e senha no terminal
-- usa `Selenium` para interagir com a página
-- tenta localizar e acionar o botão de login de forma flexível
-- verifica indícios de sucesso após a autenticação
-- registra acessos bem-sucedidos em arquivo local
+## Tecnologias Utilizadas
+
+- Python 3
+- Selenium
+- WebDriver Manager
 
 ## Como Executar
 
-1. Tenha o Python 3 instalado.
-2. Instale as dependências necessárias.
-3. Execute o script pelo terminal.
+1. Instale as dependencias:
 
 ```bash
 pip install selenium webdriver-manager
+```
+
+2. Execute o script:
+
+```bash
 python "Acesso Xeprium/Acesso_Xperium.py"
 ```
 
-## Boas Práticas Deste Repositório
+## Padrao Do Repositorio
 
-- scripts com cabeçalho descritivo
-- comentários objetivos para facilitar manutenção
-- foco em automações úteis e diretas
-- separação entre código, arquivos gerados e configurações locais
+Os scripts deste repositorio seguem uma linha simples:
 
-## Arquivos Que Não Devem Ir Para O Git
+- objetivo claro no cabecalho do arquivo
+- comentarios diretos e uteis
+- foco em automacao pratica
+- organizacao por pastas conforme o projeto cresce
+- versionamento para manter historico e confiabilidade
 
-Alguns arquivos são locais ou gerados automaticamente e não fazem sentido no versionamento:
+## O Que Nao Vai Para O Git
+
+Arquivos locais, temporarios ou gerados automaticamente ficam fora do versionamento, como:
 
 - `__pycache__/`
 - arquivos `.pyc`
 - arquivos de workspace do VS Code
-- históricos locais como `historico_acessos_xperium.txt`
+- logs e historicos locais
 
-## Próximos Passos Sugeridos
+## Proximos Passos
 
-- adicionar novos scripts por tema ou sistema
-- criar um `requirements.txt` por projeto ou um geral para a pasta
-- incluir exemplos de uso em cada subpasta
-- padronizar nomes, versões e objetivos nos cabeçalhos
+- adicionar novas automacoes por categoria
+- criar um `requirements.txt` conforme o repositorio crescer
+- incluir mais instrucoes de uso por subpasta
+- padronizar estrutura e documentacao de cada script
 
-## Sobre O Versionamento
+## Sobre Este Repositorio
 
-Subir esta pasta para o Git vale muito a pena, principalmente porque:
+Este projeto funciona como laboratorio pratico, biblioteca pessoal de automacoes e vitrine tecnica em construcao.
 
-- protege seu progresso
-- facilita voltar versões antigas
-- deixa sua evolução visível
-- transforma scripts soltos em um acervo técnico organizado
+Se a ideia for evoluir isso no GitHub, o caminho natural e separar os scripts por contexto, por exemplo:
 
-O principal cuidado é não versionar dados sensíveis, históricos locais, credenciais, arquivos temporários ou configurações muito pessoais do editor.
+- `automacao-web`
+- `arquivos-e-planilhas`
+- `utilitarios`
+- `estudos`
 
 ---
 
