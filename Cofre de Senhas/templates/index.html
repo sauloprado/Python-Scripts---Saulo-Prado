@@ -4,29 +4,95 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Cofre de Senhas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <main class="shell">
+        <section class="topbar">
+            <div class="topbar-pill">Vault OS / Local Security Layer</div>
+            <div class="topbar-meta">
+                <span>Criptografia local</span>
+                <span>Senha mestra</span>
+                <span>Sessao isolada</span>
+            </div>
+        </section>
+
         <section class="hero">
             <div class="hero-copy">
                 <span class="eyebrow">Cofre Local</span>
-                <h1>Cofre de Senhas com interface web e criptografia local.</h1>
+                <h1>Proteja suas credenciais como se fossem ativos criticos.</h1>
                 <p>
-                    Guarde credenciais no seu computador com senha mestra, arquivo criptografado
-                    e uma interface simples para consulta no dia a dia.
+                    Um cofre local para centralizar acessos de estudo, trabalho, nuvem, TV,
+                    ferramentas e plataformas com visual premium, importacao em massa e criptografia real.
                 </p>
+                <div class="hero-actions">
+                    <a class="hero-button primary-link" href="#vault-section">Abrir Area Segura</a>
+                    <div class="hero-badge">Importacao Markdown, HTML e texto livre</div>
+                </div>
+                <div class="hero-highlights">
+                    <article class="hero-mini-card">
+                        <strong>01</strong>
+                        <span>Importe categorias como Estudo, Nuvem, TV e Ferramentas</span>
+                    </article>
+                    <article class="hero-mini-card">
+                        <strong>02</strong>
+                        <span>Use icones visuais por servico com fallback inteligente</span>
+                    </article>
+                    <article class="hero-mini-card">
+                        <strong>03</strong>
+                        <span>Revele a senha por tempo curto e copie com um clique</span>
+                    </article>
+                </div>
             </div>
             <div class="hero-panel">
                 <div class="status-card">
-                    <span class="status-label">Status</span>
-                    <strong id="vault-status">Verificando...</strong>
-                    <p id="vault-subtitle">O aplicativo vai detectar se o cofre ja existe.</p>
+                    <div class="status-grid">
+                        <div class="status-block">
+                            <span class="status-label">Status</span>
+                            <strong id="vault-status">Verificando...</strong>
+                            <p id="vault-subtitle">O aplicativo vai detectar se o cofre ja existe.</p>
+                        </div>
+                        <div class="status-metrics">
+                            <div class="metric-card">
+                                <span>Threat Surface</span>
+                                <strong>Zero cloud sync</strong>
+                            </div>
+                            <div class="metric-card">
+                                <span>Protection Layer</span>
+                                <strong>PBKDF2 + Fernet</strong>
+                            </div>
+                            <div class="metric-card">
+                                <span>Operations</span>
+                                <strong>Importar, editar, copiar</strong>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="setup-section" class="panel hidden">
+        <section class="intro-strip">
+            <article class="intro-card">
+                <span class="eyebrow">Arquitetura</span>
+                <h3>Front-end e back-end bem separados</h3>
+                <p>A interface cuida da experiencia. O Flask cuida da criptografia, sessao e importacao em massa.</p>
+            </article>
+            <article class="intro-card">
+                <span class="eyebrow">Importacao</span>
+                <h3>Cole seu banco legado sem sofrimento</h3>
+                <p>HTML antigo, Markdown com tabelas e texto simples entram no parser e viram cadastros estruturados.</p>
+            </article>
+            <article class="intro-card">
+                <span class="eyebrow">Visual</span>
+                <h3>Leitura rapida por categoria e servico</h3>
+                <p>Badges, icones locais, hierarquia forte e cards pensados para uso frequente no dia a dia.</p>
+            </article>
+        </section>
+
+        <section id="setup-section" class="panel auth-panel hidden">
             <div class="panel-header">
                 <h2>Criar cofre</h2>
                 <p>Defina uma senha mestra forte. Ela sera necessaria para destravar o cofre.</p>
@@ -44,7 +110,7 @@
             </form>
         </section>
 
-        <section id="unlock-section" class="panel hidden">
+        <section id="unlock-section" class="panel auth-panel hidden">
             <div class="panel-header">
                 <h2>Desbloquear cofre</h2>
                 <p>Use sua senha mestra para acessar as credenciais salvas.</p>
@@ -68,12 +134,24 @@
             </div>
 
             <div class="vault-grid">
+                <div class="vault-side">
                 <section class="panel">
                     <div class="panel-header">
-                        <h3>Nova entrada</h3>
-                        <p>Adicione um servico ao cofre local.</p>
+                        <h3 id="form-title">Nova entrada</h3>
+                        <p id="form-subtitle">Adicione um servico ao cofre local com categoria, URL e observacoes.</p>
                     </div>
                     <form id="entry-form" class="stack">
+                        <input type="hidden" name="entry_id">
+                        <label>
+                            <span>Categoria</span>
+                            <input type="text" name="category" list="category-options" placeholder="Ex.: Plataforma, Escolas, Ferramenta" value="Geral" required>
+                        </label>
+                        <label>
+                            <span>Ícone manual</span>
+                            <select name="icon_override" id="icon-override-select">
+                                <option value="">Automático</option>
+                            </select>
+                        </label>
                         <label>
                             <span>Servico</span>
                             <input type="text" name="service" placeholder="Ex.: Gmail" required>
@@ -97,15 +175,60 @@
                             <span>Observacoes</span>
                             <textarea name="notes" rows="4" placeholder="Dicas, notas, codigos ou contexto"></textarea>
                         </label>
-                        <button type="submit" class="primary">Salvar credencial</button>
+                        <div class="form-actions">
+                            <button type="submit" class="primary" id="save-button">Salvar credencial</button>
+                            <button type="button" class="ghost hidden" id="cancel-edit-button">Cancelar edicao</button>
+                        </div>
                     </form>
                 </section>
 
                 <section class="panel">
                     <div class="panel-header">
-                        <h3>Itens do cofre</h3>
-                        <p>Pesquise e gerencie as entradas armazenadas.</p>
+                        <h3>Importacao em massa</h3>
+                        <p>Cole aqui o conteudo do HTML antigo ou um texto estruturado para criar varios cadastros de uma vez.</p>
                     </div>
+                    <form id="import-form" class="stack">
+                        <label>
+                            <span>Categoria padrao</span>
+                            <input type="text" name="default_category" list="category-options" placeholder="Importados" value="Importados">
+                        </label>
+                        <label>
+                            <span>Texto ou HTML colado</span>
+                            <textarea name="raw_text" rows="12" placeholder="Exemplo Markdown:
+
+### Estudo
+
+| Escola | Usuário | Senha | URL |
+| --- | --- | --- | --- |
+| Santander Academy | usuario@email.com | senha123 |  |
+| Grupo Voitto | usuario@email.com | senha456 | https://voitto.com.br/meu-aprendizado |
+
+Exemplo texto simples:
+
+Ferramenta
+Servico: Notion
+Usuario: meu.login
+Senha: OutraSenha456"></textarea>
+                        </label>
+                        <button type="submit" class="primary">Importar cadastros</button>
+                    </form>
+                </section>
+                </div>
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <h3>Revisao de duplicados</h3>
+                        <p>Entradas com mesma categoria, servico, usuario e URL sao agrupadas aqui para limpeza rapida.</p>
+                    </div>
+                    <div id="duplicates-list" class="duplicates-list"></div>
+                </section>
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <h3>Itens do cofre</h3>
+                        <p>Pesquise e gerencie as entradas armazenadas, agora separadas por categoria e enriquecidas com identificacao visual.</p>
+                    </div>
+                    <div id="category-filter-bar" class="category-filter-bar"></div>
                     <label class="search-field">
                         <span>Buscar</span>
                         <input id="search-input" type="search" placeholder="Filtrar por servico ou usuario">
@@ -115,6 +238,7 @@
             </div>
         </section>
 
+        <datalist id="category-options"></datalist>
         <div id="toast" class="toast hidden"></div>
     </main>
 

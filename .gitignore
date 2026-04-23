@@ -13,7 +13,15 @@ env/
 
 # Local/generated files
 *.log
+*.eml
 historico_acessos_xperium.txt
 *.env
 estado_envio.json
 vault.enc
+
+# Password vault local data
+Cofre de Senhas/vault.enc
+Cofre de Senhas/cofre.log
+
+# Access history
+Acesso Xeprium/historico_acessos_xperium.txt

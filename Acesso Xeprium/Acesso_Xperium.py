@@ -8,10 +8,11 @@ credenciais e a tentativa de confirmacao do login.
 """
 
 from getpass import getpass
-from getpass import GetPassWarning
 from datetime import datetime
+from pathlib import Path
 import sys
-import warnings
+import tkinter as tk
+from tkinter import messagebox, simpledialog
 
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
@@ -26,7 +27,8 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 # URL da pagina de login.
 LOGIN_URL = "https://app.xperiun.com/entrar"
-HISTORICO_ARQUIVO = "historico_acessos_xperium.txt"
+BASE_DIR = Path(__file__).resolve().parent
+HISTORICO_ARQUIVO = BASE_DIR / "historico_acessos_xperium.txt"
 
 # Seletores dos campos principais do formulario.
 # Aqui usamos CSS Selector porque os inputs de e-mail e senha
@@ -49,30 +51,32 @@ LOGIN_BUTTON_SELECTOR = (
 
 
 def solicitar_credenciais():
-    # Verifica se o script esta rodando em um terminal interativo.
-    # Em saidas como o painel "Output" do Code Runner, normalmente nao e
-    # possivel digitar com input() ou getpass() da forma esperada.
-    if not sys.stdin.isatty():
-        raise RuntimeError(
-            "Este script precisa ser executado em um terminal interativo. "
-            "No VS Code, rode pelo Terminal com: python Acesso_Xperium.py"
+    # Se houver terminal interativo, mantemos a experiencia simples por texto.
+    if sys.stdin.isatty():
+        email = input("Digite seu e-mail: ").strip()
+        senha = getpass("Digite sua senha: ").strip()
+    else:
+        # Ao clicar em Run no VS Code ou em outros launchers, nem sempre existe
+        # um terminal interativo. Nesse caso abrimos caixas de dialogo simples.
+        root = tk.Tk()
+        root.withdraw()
+        root.attributes("-topmost", True)
+
+        email = simpledialog.askstring(
+            "Acesso Xperium",
+            "Digite seu e-mail:",
+            parent=root,
         )
+        senha = simpledialog.askstring(
+            "Acesso Xperium",
+            "Digite sua senha:",
+            parent=root,
+            show="*",
+        )
+        root.destroy()
 
-    # Pede o e-mail no terminal.
-    # O strip() remove espacos extras antes e depois do texto digitado.
-    email = input("Digite seu e-mail: ").strip()
-
-    # Pede a senha sem exibir os caracteres na tela.
-    # Isso evita deixar a senha visivel para quem estiver olhando o terminal.
-    # Alguns ambientes, como certas configuracoes do Code Runner,
-    # nao suportam essa ocultacao. Nesses casos, fazemos fallback para input().
-    try:
-        with warnings.catch_warnings():
-            warnings.simplefilter("error", GetPassWarning)
-            senha = getpass("Digite sua senha: ").strip()
-    except (GetPassWarning, Exception):
-        print("Seu terminal nao suportou senha oculta. A senha sera digitada visivelmente.")
-        senha = input("Digite sua senha: ").strip()
+        email = (email or "").strip()
+        senha = (senha or "").strip()
 
     # Valida se ambos os campos foram preenchidos.
     # Se algum estiver vazio, interrompe a execucao com uma mensagem clara.
@@ -204,12 +208,29 @@ def testar_login():
         if status != "success":
             print(f"URL atual apos tentativa de login: {driver.current_url}")
 
-        # Mantem o navegador aberto ate o usuario decidir fechar.
-        # Isso permite observar o resultado visualmente.
-        input("Pressione Enter para fechar o navegador...")
+        # Em execucao por terminal, aguardamos confirmacao textual.
+        # Em execucao por clique, mostramos uma caixa simples.
+        if sys.stdin.isatty():
+            input("Pressione Enter para fechar o navegador...")
+        else:
+            root = tk.Tk()
+            root.withdraw()
+            root.attributes("-topmost", True)
+            messagebox.showinfo(
+                "Acesso Xperium",
+                "Clique em OK para fechar o navegador.",
+                parent=root,
+            )
+            root.destroy()
     except Exception as erro:
         # Captura qualquer erro inesperado e mostra uma mensagem amigavel.
         print(f"Ocorreu um erro durante o login: {erro}")
+        if not sys.stdin.isatty():
+            root = tk.Tk()
+            root.withdraw()
+            root.attributes("-topmost", True)
+            messagebox.showerror("Acesso Xperium", f"Ocorreu um erro durante o login:\n{erro}", parent=root)
+            root.destroy()
     finally:
         # Fecha o navegador sempre, mesmo em caso de erro.
         # O finally garante a limpeza dos recursos.
