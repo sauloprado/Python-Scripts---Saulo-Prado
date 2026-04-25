@@ -1,7 +1,7 @@
 param(
     [string]$PythonwPath = "C:\Users\saulo\AppData\Local\Programs\Python\Python312\pythonw.exe",
-    [string]$ScriptPath = "C:\Users\saulo\OneDrive\Documentos\01 - Pessoal\03 Estudo e Carreira\Python\Scripts\Email Profissional\Noticias IA Diarias\enviar_noticias_ia.py",
-    [string]$TaskName = "Noticias IA Diarias",
+    [string]$ScriptPath = "C:\Users\saulo\OneDrive\Documentos\01 - Pessoal\03 Estudo e Carreira\Python\Scripts\Noticias IA Local\gerar_noticias_ia_txt.py",
+    [string]$TaskName = "Noticias IA Local",
     [string]$StartTime = "08:00"
 )
 
@@ -18,5 +18,5 @@ Register-ScheduledTask `
     -Action $action `
     -Trigger $trigger `
     -Settings $settings `
-    -Description "Envia diariamente um resumo por e-mail com noticias sobre IA." `
+    -Description "Gera diariamente um arquivo TXT local com noticias sobre IA." `
     -Force

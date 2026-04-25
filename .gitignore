@@ -13,10 +13,9 @@ env/
 
 # Local/generated files
 *.log
-*.eml
 historico_acessos_xperium.txt
 *.env
-estado_envio.json
+estado_noticias.json
 vault.enc
 
 # Password vault local data
@@ -24,4 +23,7 @@ Cofre de Senhas/vault.enc
 Cofre de Senhas/cofre.log
 
 # Access history
-Acesso Xeprium/historico_acessos_xperium.txt
+Acesso Xperium/historico_acessos_xperium.txt
+
+# Local news output
+Noticias IA Local/leituras/

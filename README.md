@@ -16,22 +16,22 @@ Aqui voce vai encontrar scripts que ajudam a:
 
 ## Projeto Em Destaque
 
-### Noticias IA Diarias por E-mail
+### Noticias IA Local
 
-Uma das automacoes mais interessantes deste repositorio e o projeto de envio diario de noticias sobre inteligencia artificial por e-mail.
+Uma das automacoes mais interessantes deste repositorio e o projeto local de noticias sobre inteligencia artificial em arquivo TXT.
 
 Essa automacao foi criada para:
 
 - buscar noticias recentes sobre ChatGPT, Claude, OpenAI, Anthropic e IA em geral
-- montar um resumo em HTML com visual mais profissional
-- enviar automaticamente para um destinatario definido
-- funcionar em segundo plano com agendamento diario no Windows
+- montar um resumo simples para leitura local
+- salvar o resultado em arquivo `.txt`
+- funcionar manualmente ou em segundo plano com agendamento diario no Windows
 
 Arquivos principais:
 
-- `Email Profissional/Noticias IA Diarias/enviar_noticias_ia.py`
-- `Email Profissional/Noticias IA Diarias/agendar_noticias_ia.ps1`
-- `Email Profissional/Noticias IA Diarias/CONFIGURACAO_E_PASSO_A_PASSO.md`
+- `Noticias IA Local/gerar_noticias_ia_txt.py`
+- `Noticias IA Local/agendar_noticias_ia_local.ps1`
+- `Noticias IA Local/CONFIGURACAO_E_PASSO_A_PASSO.md`
 
 Esse projeto representa bem a proposta do repositorio: transformar uma necessidade real do dia a dia em uma automacao util, documentada e reutilizavel.
 
@@ -54,36 +54,21 @@ O script realiza:
 - validacao basica do resultado
 - registro local de acessos bem-sucedidos
 
-### `Email Profissional/`
+### `Noticias IA Local/`
 
-Base inicial para envio de e-mails com HTML, anexos e estrutura pronta para evoluir para automacoes mais sofisticadas.
-
-Arquivo principal:
-
-- `Email_Profissional_Com_Anexo.py`
-
-O projeto foi pensado para permitir:
-
-- mensagens com visual mais elegante
-- envio com anexo
-- padronizacao de comunicacoes recorrentes
-- futura expansao para historico, templates e envio em lote
-
-### `Email Profissional/Noticias IA Diarias/`
-
-Automacao pensada para buscar noticias recentes sobre inteligencia artificial e enviar um resumo diario por e-mail de forma automatica.
+Automacao pensada para buscar noticias recentes sobre inteligencia artificial e salvar um resumo local em arquivo TXT.
 
 Arquivos principais:
 
-- `enviar_noticias_ia.py`
+- `gerar_noticias_ia_txt.py`
 - `.env.example`
-- `agendar_noticias_ia.ps1`
+- `agendar_noticias_ia_local.ps1`
 
 O projeto ja nasce preparado para:
 
 - consolidar noticias sobre ChatGPT, Claude, OpenAI e Anthropic
-- montar um resumo em HTML
-- enviar para um destinatario fixo todos os dias
+- montar um resumo em texto simples
+- salvar as noticias em uma pasta local de leitura
 - rodar em segundo plano com agendamento no Windows
 
 ### `Cofre de Senhas/`
@@ -108,16 +93,26 @@ O projeto foi desenhado para:
 - Python 3
 - Selenium
 - WebDriver Manager
+- Flask
+- RSS
 
 ## Como Executar
 
-1. Instale as dependencias:
+### Noticias IA Local
+
+```bash
+python "Noticias IA Local/gerar_noticias_ia_txt.py"
+```
+
+### Acesso Xperium
+
+Instale as dependencias:
 
 ```bash
 pip install selenium webdriver-manager
 ```
 
-2. Execute o script:
+Execute o script:
 
 ```bash
 python "Acesso Xperium/Acesso_Xperium.py"
