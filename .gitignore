@@ -15,7 +15,6 @@ env/
 *.log
 historico_acessos_xperium.txt
 *.env
-estado_noticias.json
 vault.enc
 
 # Password vault local data
@@ -25,5 +24,10 @@ Cofre de Senhas/cofre.log
 # Access history
 Acesso Xperium/historico_acessos_xperium.txt
 
-# Local news output
-Noticias IA Local/leituras/
+# Noticias IA Web
+Noticias IA Web/frontend/node_modules/
+Noticias IA Web/frontend/dist/
+Noticias IA Web/backend/.env
+Noticias IA Web/storage/leituras/*.txt
+Noticias IA Web/storage/db/*.db
+Noticias IA Web/storage/db/*.db-journal

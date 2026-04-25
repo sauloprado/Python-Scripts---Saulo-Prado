@@ -16,22 +16,24 @@ Aqui voce vai encontrar scripts que ajudam a:
 
 ## Projeto Em Destaque
 
-### Noticias IA Local
+### Noticias IA Web
 
-Uma das automacoes mais interessantes deste repositorio e o projeto local de noticias sobre inteligencia artificial em arquivo TXT.
+Uma das automacoes mais interessantes deste repositorio e o projeto web local de noticias sobre inteligencia artificial.
 
 Essa automacao foi criada para:
 
 - buscar noticias recentes sobre ChatGPT, Claude, OpenAI, Anthropic e IA em geral
-- montar um resumo simples para leitura local
-- salvar o resultado em arquivo `.txt`
-- funcionar manualmente ou em segundo plano com agendamento diario no Windows
+- permitir login local com usuario e senha
+- mostrar as noticias em uma interface React moderna
+- salvar os resultados em SQLite e em arquivos `.txt`
+- funcionar como uma aplicacao com frontend e backend locais
 
 Arquivos principais:
 
-- `Noticias IA Local/gerar_noticias_ia_txt.py`
-- `Noticias IA Local/agendar_noticias_ia_local.ps1`
-- `Noticias IA Local/CONFIGURACAO_E_PASSO_A_PASSO.md`
+- `Noticias IA Web/backend/app.py`
+- `Noticias IA Web/backend/news_service.py`
+- `Noticias IA Web/frontend/src/App.jsx`
+- `Noticias IA Web/README.md`
 
 Esse projeto representa bem a proposta do repositorio: transformar uma necessidade real do dia a dia em uma automacao util, documentada e reutilizavel.
 
@@ -54,22 +56,24 @@ O script realiza:
 - validacao basica do resultado
 - registro local de acessos bem-sucedidos
 
-### `Noticias IA Local/`
+### `Noticias IA Web/`
 
-Automacao pensada para buscar noticias recentes sobre inteligencia artificial e salvar um resumo local em arquivo TXT.
+Aplicacao web local para buscar noticias recentes sobre inteligencia artificial, salvar historico no SQLite e gerar arquivos TXT para leitura.
 
 Arquivos principais:
 
-- `gerar_noticias_ia_txt.py`
-- `.env.example`
-- `agendar_noticias_ia_local.ps1`
+- `backend/app.py`
+- `backend/db.py`
+- `backend/news_service.py`
+- `frontend/src/App.jsx`
 
 O projeto ja nasce preparado para:
 
 - consolidar noticias sobre ChatGPT, Claude, OpenAI e Anthropic
-- montar um resumo em texto simples
-- salvar as noticias em uma pasta local de leitura
-- rodar em segundo plano com agendamento no Windows
+- autenticar o acesso com usuario e senha
+- gerar novas buscas pelo navegador
+- exibir cards de leitura com imagens quando disponiveis
+- salvar as noticias em `storage/leituras/` e `storage/db/`
 
 ### `Cofre de Senhas/`
 
@@ -94,14 +98,27 @@ O projeto foi desenhado para:
 - Selenium
 - WebDriver Manager
 - Flask
+- React
+- SQLite
 - RSS
 
 ## Como Executar
 
-### Noticias IA Local
+### Noticias IA Web
+
+Backend:
 
 ```bash
-python "Noticias IA Local/gerar_noticias_ia_txt.py"
+cd "Noticias IA Web/backend"
+python app.py
+```
+
+Frontend:
+
+```bash
+cd "Noticias IA Web/frontend"
+npm install
+npm run dev
 ```
 
 ### Acesso Xperium
