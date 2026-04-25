@@ -37,9 +37,9 @@ Esse projeto representa bem a proposta do repositorio: transformar uma necessida
 
 ## Estrutura Atual
 
-### `Acesso Xeprium/`
+### `Acesso Xperium/`
 
-Automacao de acesso a plataforma Xperiun com Python e Selenium.
+Automacao de acesso a plataforma Xperium com Python e Selenium.
 
 Arquivo principal:
 
@@ -120,7 +120,7 @@ pip install selenium webdriver-manager
 2. Execute o script:
 
 ```bash
-python "Acesso Xeprium/Acesso_Xperium.py"
+python "Acesso Xperium/Acesso_Xperium.py"
 ```
 
 ## Padrao Do Repositorio

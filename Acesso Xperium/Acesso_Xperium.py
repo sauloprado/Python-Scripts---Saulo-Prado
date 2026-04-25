@@ -2,7 +2,7 @@
 Criado por: Saulo Prado
 Versao: 1.10
 Objetivo: Automacao de acesso a plataforma
-Automatizar o acesso a plataforma Xperiun usando Selenium,
+Automatizar o acesso a plataforma Xperium usando Selenium,
 realizando a abertura do navegador, o preenchimento das
 credenciais e a tentativa de confirmacao do login.
 """
