@@ -1,177 +1,126 @@
-# Python Scripts - Saulo Prado
+<p align="center">
+<img src="assets/capa.png" alt="Python Scripts" width="100%">
+</p>
 
-Colecao pessoal de scripts Python voltados para automacao, produtividade, testes praticos e aprendizado aplicado.
+<h1 align="center">Python Scripts</h1>
+<p align="center"><i>Automações do dia a dia em Python: notícias de IA, cofre de senhas e acesso automatizado</i></p>
 
-Este repositorio reune pequenos projetos uteis do dia a dia, com foco em organizacao, clareza de codigo e evolucao continua. A ideia nao e apenas guardar arquivos, mas construir uma base reutilizavel de automacoes reais.
+<p align="center">
+<img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python">
+<img src="https://img.shields.io/badge/Flask-000000?style=flat-square&logo=flask&logoColor=white" alt="Flask">
+<img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=white" alt="React">
+<img src="https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white" alt="SQLite">
+<img src="https://img.shields.io/badge/Selenium-43B02A?style=flat-square&logo=selenium&logoColor=white" alt="Selenium">
+<img src="https://img.shields.io/badge/status-em%20andamento-F59E0B?style=flat-square" alt="status: em andamento">
+</p>
 
-## Visao Geral
+## Sumário
 
-Aqui voce vai encontrar scripts que ajudam a:
+- [Sobre](#sobre)
+- [Projetos](#projetos)
+- [Como funciona](#como-funciona)
+- [Tecnologias](#tecnologias)
+- [Como executar](#como-executar)
+- [Estrutura do repositório](#estrutura-do-repositório)
+- [Padrões do repositório](#padrões-do-repositório)
+- [Autor](#autor)
 
-- automatizar tarefas repetitivas
-- acelerar rotinas operacionais
-- registrar aprendizados com projetos praticos
-- transformar estudos em codigo reutilizavel
-- manter um historico versionado da evolucao tecnica
+## Sobre
 
-## Projeto Em Destaque
+Coleção de **automações reais do dia a dia**, construídas para resolver necessidades práticas e registrar a evolução técnica. Cada pasta é um projeto independente, documentado e pronto para rodar localmente.
 
-### Noticias IA Web
+## Projetos
 
-Uma das automacoes mais interessantes deste repositorio e o projeto web local de noticias sobre inteligencia artificial.
+| Projeto | O que faz | Stack |
+| --- | --- | --- |
+| [**Notícias IA Web**](Noticias%20IA%20Web/) | Busca notícias recentes sobre ChatGPT, Claude, OpenAI e Anthropic, com login local, interface React e histórico em SQLite e `.txt` | Flask · React · SQLite · RSS |
+| [**Cofre de Senhas**](Cofre%20de%20Senhas/) | Cofre local com senha mestra, dados criptografados em disco e gerador de senhas fortes | Flask · cryptography |
+| [**Acesso Xperium**](Acesso%20Xperium/) | Automatiza o login na plataforma Xperium: abre o navegador, preenche o formulário e registra os acessos | Selenium · WebDriver Manager |
 
-Essa automacao foi criada para:
+## Como funciona
 
-- buscar noticias recentes sobre ChatGPT, Claude, OpenAI, Anthropic e IA em geral
-- permitir login local com usuario e senha
-- mostrar as noticias em uma interface React moderna
-- salvar os resultados em SQLite e em arquivos `.txt`
-- funcionar como uma aplicacao com frontend e backend locais
-
-Arquivos principais:
-
-- `Noticias IA Web/backend/app.py`
-- `Noticias IA Web/backend/news_service.py`
-- `Noticias IA Web/frontend/src/App.jsx`
-- `Noticias IA Web/README.md`
-
-Esse projeto representa bem a proposta do repositorio: transformar uma necessidade real do dia a dia em uma automacao util, documentada e reutilizavel.
-
-## Estrutura Atual
-
-### `Acesso Xperium/`
-
-Automacao de acesso a plataforma Xperium com Python e Selenium.
-
-Arquivo principal:
-
-- `Acesso_Xperium.py`
-
-O script realiza:
-
-- abertura automatica do navegador
-- captura de credenciais via terminal
-- preenchimento do formulario de login
-- tentativa de clique e envio do acesso
-- validacao basica do resultado
-- registro local de acessos bem-sucedidos
-
-### `Noticias IA Web/`
-
-Aplicacao web local para buscar noticias recentes sobre inteligencia artificial, salvar historico no SQLite e gerar arquivos TXT para leitura.
-
-Arquivos principais:
-
-- `backend/app.py`
-- `backend/db.py`
-- `backend/news_service.py`
-- `frontend/src/App.jsx`
-
-O projeto ja nasce preparado para:
-
-- consolidar noticias sobre ChatGPT, Claude, OpenAI e Anthropic
-- autenticar o acesso com usuario e senha
-- gerar novas buscas pelo navegador
-- exibir cards de leitura com imagens quando disponiveis
-- salvar as noticias em `storage/leituras/` e `storage/db/`
-
-### `Cofre de Senhas/`
-
-Aplicacao local com interface web para armazenamento de credenciais com senha mestra e arquivo criptografado.
-
-Arquivos principais:
-
-- `app.py`
-- `requirements.txt`
-- `templates/index.html`
-
-O projeto foi desenhado para:
-
-- guardar senhas localmente com criptografia
-- usar senha mestra para desbloqueio
-- oferecer cadastro, consulta e exclusao de credenciais
-- gerar senhas fortes automaticamente
-
-## Tecnologias Utilizadas
-
-- Python 3
-- Selenium
-- WebDriver Manager
-- Flask
-- React
-- SQLite
-- RSS
-
-## Como Executar
-
-### Noticias IA Web
-
-Backend:
-
-```bash
-cd "Noticias IA Web/backend"
-python app.py
+```mermaid
+flowchart LR
+    subgraph N[Notícias IA Web]
+        N1[Fontes RSS] --> N2[news_service.py] --> N3[(SQLite)]
+        N2 --> N4[storage/leituras/*.txt]
+        N3 --> N5[Interface React]
+    end
+    subgraph C[Cofre de Senhas]
+        C1[Senha mestra] --> C2[app.py] --> C3[(Arquivo criptografado)]
+    end
 ```
 
-Frontend:
+## Tecnologias
+
+| Tecnologia | Uso |
+| --- | --- |
+| Python 3 | Base de todas as automações |
+| Flask | Backends locais (Notícias IA e Cofre) |
+| React + Vite | Frontend do Notícias IA Web |
+| SQLite | Histórico das notícias |
+| cryptography | Criptografia do cofre |
+| Selenium + WebDriver Manager | Automação de navegador |
+
+## Como executar
+
+**Notícias IA Web**
 
 ```bash
+# backend
+cd "Noticias IA Web/backend"
+pip install -r requirements.txt
+python app.py
+
+# frontend (outro terminal)
 cd "Noticias IA Web/frontend"
 npm install
 npm run dev
 ```
 
-### Acesso Xperium
+**Cofre de Senhas** — o launcher instala as dependências, sobe o servidor e abre o navegador:
 
-Instale as dependencias:
+```bash
+python subir_cofre.py
+```
+
+**Acesso Xperium**
 
 ```bash
 pip install selenium webdriver-manager
-```
-
-Execute o script:
-
-```bash
 python "Acesso Xperium/Acesso_Xperium.py"
 ```
 
-## Padrao Do Repositorio
+## Estrutura do repositório
 
-Os scripts deste repositorio seguem uma linha simples:
+```text
+Python-Scripts---Saulo-Prado/
+├── Acesso Xperium/
+│   └── Acesso_Xperium.py
+├── Cofre de Senhas/
+│   ├── app.py
+│   ├── icon_bank.py
+│   ├── requirements.txt
+│   ├── static/  (app.js, styles.css)
+│   └── templates/index.html
+├── Noticias IA Web/
+│   ├── backend/  (app.py, db.py, news_service.py, requirements.txt)
+│   ├── frontend/ (React + Vite)
+│   └── storage/  (db/, leituras/)
+├── assets/capa.png
+└── subir_cofre.py
+```
 
-- objetivo claro no cabecalho do arquivo
-- comentarios diretos e uteis
-- foco em automacao pratica
-- organizacao por pastas conforme o projeto cresce
-- versionamento para manter historico e confiabilidade
+## Padrões do repositório
 
-## O Que Nao Vai Para O Git
+- Objetivo claro no cabeçalho de cada script
+- Uma pasta por projeto, com README próprio quando necessário
+- Arquivos locais e gerados (`__pycache__/`, logs, bancos e workspaces) ficam fora do Git
+- Credenciais nunca são versionadas: use `.env` a partir do `.env.example`
 
-Arquivos locais, temporarios ou gerados automaticamente ficam fora do versionamento, como:
+## Autor
 
-- `__pycache__/`
-- arquivos `.pyc`
-- arquivos de workspace do VS Code
-- logs e historicos locais
+**Saulo Prado** · Analista de Sistemas · Gestão de Ativos de TI, orçamento, automação e dashboards
 
-## Proximos Passos
-
-- adicionar novas automacoes por categoria
-- criar um `requirements.txt` conforme o repositorio crescer
-- incluir mais instrucoes de uso por subpasta
-- padronizar estrutura e documentacao de cada script
-
-## Sobre Este Repositorio
-
-Este projeto funciona como laboratorio pratico, biblioteca pessoal de automacoes e vitrine tecnica em construcao.
-
-Se a ideia for evoluir isso no GitHub, o caminho natural e separar os scripts por contexto, por exemplo:
-
-- `automacao-web`
-- `arquivos-e-planilhas`
-- `utilitarios`
-- `estudos`
-
----
-
-Criado e mantido por **Saulo Prado**.
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Saulo%20Prado-0A66C2?style=flat-square&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/saulo-prado-ab4a0b96/)
+[![GitHub](https://img.shields.io/badge/GitHub-sauloprado-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/sauloprado)
